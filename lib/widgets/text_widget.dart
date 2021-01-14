@@ -8,7 +8,7 @@ Text HeaderText(String data) {
     data,
     style: TextStyle(
       color: Colors.white,
-      fontSize: 40,
+      fontSize: 32,
     ),
   );
 }
@@ -19,6 +19,15 @@ Text NormalText(String data,
       style: TextStyle(
         color: color,
         fontSize: fontSize,
+      ));
+}
+Text SlimText(String data,
+    {Color color = Colors.white, double fontSize = 14}) {
+  return Text(data,
+      style: TextStyle(
+        color: color,
+        fontSize: fontSize,
+        fontWeight: FontWeight.w400,
       ));
 }
 
@@ -62,3 +71,4 @@ RichText ErrorRichText(String content,
     ),
   );
 }
+

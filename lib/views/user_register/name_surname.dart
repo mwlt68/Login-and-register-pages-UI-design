@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:up_work_ui/common/final_datas.dart';
 import 'package:up_work_ui/models/User.dart';
 import 'package:up_work_ui/views/user_register/e_mail_page.dart';
+import 'package:up_work_ui/widgets/button_widget.dart';
 import 'package:up_work_ui/widgets/container_widget.dart';
 import 'package:up_work_ui/widgets/text_widget.dart';
 
@@ -14,14 +15,12 @@ class NameSurname extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(user.toString());
-
     Color themeColor = Theme.of(context).primaryColor;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          actions: [FlatButton(onPressed: () {}, child: NormalText("Cancel"))],
+          actions: [CancelButton(context)],
         ),
         body: Container(
             color: themeColor,

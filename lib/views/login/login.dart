@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:up_work_ui/common/final_datas.dart';
-import 'package:up_work_ui/models/User.dart';
-import 'package:up_work_ui/views/user_register/create_password.dart';
 import 'package:up_work_ui/widgets/button_widget.dart';
 import 'package:up_work_ui/widgets/container_widget.dart';
 import 'package:up_work_ui/widgets/text_widget.dart';
 
-class EMailPage extends StatelessWidget {
-  User user;
-  EMailPage({Key key, @required this.user}) : super(key: key);
-  TextEditingController _eMailController = TextEditingController();
-
+class LoginPage extends StatelessWidget {
+    TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    Color themeColor = Theme.of(context).primaryColor;
+Color themeColor = Theme.of(context).primaryColor;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -23,32 +19,35 @@ class EMailPage extends StatelessWidget {
         body: Container(
             color: themeColor,
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Form(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HeaderText(DefaultTexts.EMailHeader),
+                  HeaderText(DefaultTexts.LoginHeader),
                   BasicDataInput([
                     NormalText(DefaultTexts.EMail),
-                    NormalTextFormField(_eMailController),
+                    NormalTextFormField(_emailController),
                   ]),
-                  RightBottomButton("Next", themeColor, () {_nextPasswordPage(context,_eMailController.text);}),
+                  BasicDataInput([
+                    NormalText(DefaultTexts.CreatePassword),
+                    NormalTextFormField(_passwordController),
+                  ]),
+                  RightSideWidget(
+                    FlatButton(
+                      onPressed: (){
+                        print(DefaultTexts.LoginForgotPassword);
+                      },
+                      child: SlimText(
+                        DefaultTexts.LoginForgotPassword,
+                    )
+                  ),),
+                  RightBottomButton("Ok", themeColor, () {}),
                 ],
               )),
             )),
       ),
     );
-  }
-
-  _nextPasswordPage(BuildContext context,String eMail){
-    if(eMail != ""){
-//    return ;
-    }
-    user.email=eMail;
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => CreatePassword(user: user)));
   }
 }

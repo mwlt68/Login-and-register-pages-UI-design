@@ -10,25 +10,35 @@ Container BasicDataInput(List<Widget> widgets) {
   );
 }
 
-Container RightBottomButton(String text,Color color,final VoidCallback onPressed,{IconData icon=Icons.navigate_next} ) {
+Container RightSideWidget(Widget widget) {
   return Container(
     child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FlatButton(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(25))),
-              onPressed: onPressed,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  NormalText(text, color: color),
-                  Icon(icon, color: color),
-                ],
-              )),
-        ]),
+        children: [widget]),
+  );
+}
+
+Container RightBottomButton(
+    String text, Color color, final VoidCallback onPressed,
+    {IconData icon = Icons.navigate_next}) {
+  return RightSideWidget(
+    FlatButton(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(25))),
+        onPressed: onPressed,
+        child: Container(
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              NormalText(text, color: color),
+              Container(
+                  margin: EdgeInsets.only(left: 10),
+                  child: Icon(icon, color: color)),
+            ],
+          ),
+        )),
   );
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:up_work_ui/common/final_datas.dart';
 import 'package:up_work_ui/models/User.dart';
+import 'package:up_work_ui/views/user_register/birthday.dart';
+import 'package:up_work_ui/widgets/button_widget.dart';
 import 'package:up_work_ui/widgets/container_widget.dart';
 import 'package:up_work_ui/widgets/text_widget.dart';
 
@@ -18,7 +20,6 @@ class _CreatePasswordState extends State<CreatePassword> {
   String _tempPassword = "";
   @override
   Widget build(BuildContext context) {
-    print(widget.user.toString());
     TextEditingController _passwordController = TextEditingController();
     Color themeColor = Theme.of(context).primaryColor;
     _passwordController.text = _tempPassword;
@@ -27,7 +28,7 @@ class _CreatePasswordState extends State<CreatePassword> {
         key: _scaffoldKey,
         appBar: AppBar(
           elevation: 0,
-          actions: [FlatButton(onPressed: () {}, child: NormalText("Cancel"))],
+          actions: [CancelButton(context)],
         ),
         body: Container(
             color: themeColor,
@@ -46,7 +47,7 @@ class _CreatePasswordState extends State<CreatePassword> {
                           children: [
                             Expanded(
                                 child: NormalText(
-                                    DefaultTexts.CreatePasswordHeader)),
+                                    DefaultTexts.CreatePassword)),
                             FlatButton(
                                 onPressed: () {
                                   setState(() {
@@ -82,6 +83,8 @@ class _CreatePasswordState extends State<CreatePassword> {
           .showSnackBar(SnackBar(content:ErrorRichText(checkPassword,headerColor: themeColor),backgroundColor: Colors.white,));
     } else {
       widget.user.password = password;
+          Navigator.push(context,
+        MaterialPageRoute(builder: (context) => BirthdayPage(user: widget.user)));
     }
   }
 
