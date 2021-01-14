@@ -7,8 +7,8 @@ This project was any freelance task and it shared some image about this job.I de
 Result Images
 
 ![](images/result/1.png)
-![](images/result/1.png)
-![](images/result/1.png)
+![](images/result/2.png)
+![](images/result/3.png)
 
 Intended Images
 
